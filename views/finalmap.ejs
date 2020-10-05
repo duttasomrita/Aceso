@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <title>My Google Map</title>
+  <style>
+    #map {
+      height: 500px;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>
+    <center>
+      Hospital Map
+    </center>
+  </h1>
+  <table>
+
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        // Map options
+        var options = {
+          zoom: 8,
+          center: {
+            lat: 20.296059,
+            lng: 85.824539
+          }
+        }
+
+        // New map
+        var map = new google.maps.Map(document.getElementById('map'), options);
+
+        // Listen for click on map
+        google.maps.event.addListener(map, 'click', function(event) {
+          // Add marker
+          //addMarker({coords:event.latLng});
+
+        });
+
+        /*
+        // Add marker
+        var marker = new google.maps.Marker({
+          position:{lat:42.4668,lng:-70.9495},
+          map:map,
+          icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+        });
+
+        var infoWindow = new google.maps.InfoWindow({
+          content:'<h1>Lynn MA</h1>'
+        });*/
+
+
+
+
+        // Array of markers
+
+        var markers = [{
+            coords: {
+              lat: 20.285913,
+              lng: 85.771991
+            },
+            //  iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+            content: '<h2>SUM Hospital</h2>'
+          },
+          {
+            coords: {
+              lat: 20.296059,
+              lng: 85.824539
+            },
+            content: '<h2>Apollo Hospital</h2>'
+          },
+          {
+            coords: {
+              lat: 20.4721,
+              lng: 85.8915
+            },
+            content: '<h2>S.C.B Medical College</h2>'
+          },
+          {
+            coords: {
+              lat: 20.4805,
+              lng: 85.8588
+            },
+            content: '<h2>SUN Hospital</h2>'
+          },
+          {
+            coords: {
+              lat: 20.3214309,
+              lng: 85.8128616
+            },
+            content: '<h2>CARE Hospital</h2>'
+          },
+          {
+            coords: {
+              lat: 20.546923,
+              lng: 85.822206
+            },
+            content: '<h1>Vivekanand Hospital</h1>'
+          },
+          {
+            coords: {
+              lat: 20.26013645,
+              lng: 85.82271707
+            },
+            content: '<h1>Capital Hospital</h1>'
+          },
+          {
+            coords: {
+              lat: 21.8536074,
+              lng: 84.0170726
+            },
+            content: '<h1>District Headquarter Hospital</h1>'
+          },
+          {
+            coords: {
+              lat: 21.08055,
+              lng: 83.230014
+            },
+            content: '<h1>Christian Hospital</h1>'
+          },
+          {
+            coords: {
+              lat: 20.272610,
+              lng: 85.833120
+            },
+            content: '<h1>All India Institute of Medical Sciences</h1>'
+          }
+        ];
+
+        // Loop through markers
+        for (var i = 0; i < markers.length; i++) {
+          // Add marker
+          addMarker(markers[i]);
+        }
+
+        // Add Marker Function
+        function addMarker(props) {
+          var marker = new google.maps.Marker({
+            position: props.coords,
+            map: map,
+
+            //icon:props.iconImage
+          });
+          marker.addListener('click', function() {
+            infoWindow.open(map, marker);
+          });
+
+          if (props.content) {
+            var infoWindow = new google.maps.InfoWindow({
+              content: props.content
+            });
+            // Check for customicon
+            // if(props.iconImage){
+            //   // Set icon image
+            //   marker.setIcon(props.iconImage);
+            // }
+
+            // Check content
+
+
+            // marker.addListener('click', function(){
+            //   infoWindow.open(map, marker);
+            // });
+          }
+        }
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAGXeAn-EspVCh93GrbNbBkrxFcFCf3uU&callback=initMap">
+    </script>
+    <div id="list" class="map-list">
+      <ul>
+        <li>
+          <div>
+            <h3>Sum Hospital</h3>
+            <button type="button" name="button" class="btn btn-dark btn-lg"><a href="https://www.sum.soa.ac.in/">Make Appointment</a></button>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>AIIMS Bhubaneswar</h3>
+            <button type="button" name="button" class="btn btn-dark btn-lg"><a href="http://aiimsbhubaneswar.nic.in/">Make Appointment</a></button>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>SUN Hospital</h3>
+            <button type="button" name="button" class="btn btn-dark btn-lg"><a href="http://www.sunhospitals.com/">Make Appointment</a></button>
+          </div>
+        </li>
+          <li>
+        <div>
+          <h3>AMRII</h3>
+          <button type="button" name="button" class="btn btn-dark btn-lg"><a href="https://www.amrihospitals.in/index.php">Make Appointment</a></button>
+    </div>
+    </li>
+    <li>
+      <div>
+        <h3>UTKAL Hospital</h3>
+        <button type="button" name="button" class="btn btn-dark btn-lg"><a href="http://utkalhospital.com/">Make Appointment</a></button>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h3>Apollo Hospital</h3>
+        <button type="button" name="button" class="btn btn-dark btn-lg"><a href="https://www.askapollo.com/hospital/bhubaneswar/apollo-hospitals-bhubaneswar">Make Appointment</a></button>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h3>SCB Medical College</h3>
+        <button type="button" name="button" class="btn btn-dark btn-lg"><a href="http://scbmch.nic.in/">Make Appointment</a></button>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h3>Capital Hospital</h3>
+        <button type="button" name="button" class="btn btn-dark btn-lg"><a href="http://capitalhospital.nic.in/">Make Appointment</a></button>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h3>Vivekanand Hospital</h3>
+        <button type="button" name="button" class="btn btn-dark btn-lg"><a href="http://www.vivekanandhospital.com/">Make Appointment</a></button>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h3>Care Hospital</h3>
+        <button type="button" name="button" class="btn btn-dark btn-lg"><a href="https://carehospitals.com/hospitals/bhubaneswar/">Make Appointment</a></button>
+      </div>
+    </li>
+    </ul>
+    </div>
+
+  </table>
+</body>
+
+</html>

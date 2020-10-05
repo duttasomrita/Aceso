@@ -1,0 +1,27 @@
+body{
+  font-family: "Montserrat",sans-serif;
+  background-color: #ef9a9a;
+  color: white;
+  margin-left: 4rem;
+}
+h1{
+  text-align: center;
+  margin: 2.5rem;
+  font-weight:bolder;
+}
+.info{
+  text-align: left;
+  font-family: "Ubuntu",sans-serif;
+  font-size: 2.5rem;
+  font-weight:600;
+
+}
+.input-group{
+  width: 30rem;
+}
+.doctors{
+  width: 50rem;
+}
+.beds{
+  width: 50rem;
+}
